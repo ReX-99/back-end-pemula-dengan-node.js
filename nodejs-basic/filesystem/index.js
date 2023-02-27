@@ -8,4 +8,4 @@ const fileReadCallBack = (error, data) => {
     console.log(data);
 };
 
-fs.readFile(`todo.txt`, `UTF-8`, fileReadCallBack);
+fs.readFile(`notes.txt`, `UTF-8`, fileReadCallBack);
