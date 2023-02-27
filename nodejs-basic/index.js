@@ -1,11 +1,15 @@
-const fs = require(`fs`);
+const fs = require('fs');
 
-const fileReadCallBack = (error, data) => {
-    if(error) {
-        console.log(`Gagal membaca berkas`);
-        return;
+const readableStream = fs.createReadStream('article.txt', {});
+
+readableStream.on('readable', () => {
+    try {
+        process.stdout.write(`[${readableStream.read()}]`);
+    } catch(error) {
+        
     }
-    console.log(data);
-};
+});
 
-fs.readFile(`todo.txt`, `UTF-8`, fileReadCallBack);
+readableStream.on('end', () => {
+    console.log('Done');
+});
