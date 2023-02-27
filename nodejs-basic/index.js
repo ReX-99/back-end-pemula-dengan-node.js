@@ -1,15 +1,7 @@
 const fs = require('fs');
 
-const readableStream = fs.createReadStream('article.txt', {});
+const writeableStream = fs.createWriteStream('output.txt');
 
-readableStream.on('readable', () => {
-    try {
-        process.stdout.write(`[${readableStream.read()}]`);
-    } catch(error) {
-        
-    }
-});
-
-readableStream.on('end', () => {
-    console.log('Done');
-});
+writeableStream.write('Ini merupakan teks baris pertama!\n');
+writeableStream.write('Ini merupakan teks baris kedua!\n');
+writeableStream.end('Akhir dari writable stream');
